@@ -23,6 +23,9 @@ deploy, and the analytics contract.
 
 ## Conventions
 
+- **SEO is a contract**: every page's `metadata` comes from `pageMetadata()` in
+  `src/lib/seo.ts` and renders `pageGraph()` JSON-LD. Add each new route to
+  `src/app/seo.test.ts`. SEO landing pages are data in `src/lib/guides.ts`.
 - `src/lib/site.ts` holds every env read and shared constant. Import from it.
 - **Claims must match the app.** The landing, support, and privacy copy make
   promises (no accounts, offline, no patient data, no data collection, camera

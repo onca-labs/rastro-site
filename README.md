@@ -11,8 +11,27 @@ https://onca-labs.github.io/rastro-site/
 | Route | What it is |
 | --- | --- |
 | `/` | landing page |
+| `/<slug>/` | SEO landing pages ("guides"), one per search intent, from `src/lib/guides.ts` |
 | `/support/` | the App Store **Support URL** |
 | `/privacy/` | the App Store **Privacy Policy URL**, covering the app and this site |
+| `404.html` | not-found page (`noindex`), served by Pages for unknown paths |
+
+## SEO
+
+- **Every page builds its metadata with `pageMetadata()`** (`src/lib/seo.ts`):
+  title, description, canonical, Open Graph, and Twitter card with the
+  1200x630 preview. `src/app/seo.test.ts` fails if a page is missing any of
+  them, if a title is over 60 characters or a description outside 110 to 160,
+  or if two pages share a title or description. Add new routes to that test.
+- **Structured data**: every page renders a JSON-LD graph (`pageGraph()`):
+  Organization, WebSite, MobileApplication, and the WebPage; guides add
+  BreadcrumbList and FAQPage.
+- **Guides**: add one by adding an entry to `GUIDES` in `src/lib/guides.ts`.
+  The route, metadata, sitemap entry, footer link, and related links all
+  follow. Check every claim against the app's PRD first.
+- **Social preview**: `public/images/og-card.png`, rendered by
+  `node scripts/og-image.mjs`. Re-run it after changing the logo, screenshot,
+  or its copy.
 
 ## Stack
 
@@ -64,7 +83,7 @@ optimization. The early-access CTA is a `mailto:` link for that reason.
 
 | Event | Fired when | Params |
 | --- | --- | --- |
-| `request_access` | an early-access CTA is clicked | `location` (`header`, `hero`, `footer_cta`) |
+| `request_access` | an early-access CTA is clicked | `location` (`header`, `hero`, `footer_cta`, `guide_<slug>`) |
 | `contact_click` | the support email is clicked | `location` |
 
 Anchor ids `top`, `features`, `how`, `who`, `privacy-first`, `early-access` are asserted by

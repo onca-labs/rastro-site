@@ -35,10 +35,30 @@
   display: block;
 }
 
-.nav,
-.footerNav {
+.nav {
   display: flex;
   gap: 22px;
+}
+
+.footerCols {
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+
+.footerCol {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.footerHead {
+  margin: 0 0 4px !important;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .nav {
@@ -68,7 +88,7 @@
 }
 
 .nav a,
-.footerNav a {
+.footerCol a {
   color: var(--ink-2);
   font-size: 15px;
   font-weight: 500;
@@ -76,7 +96,7 @@
 }
 
 .nav a:hover,
-.footerNav a:hover {
+.footerCol a:hover {
   color: var(--ink);
 }
 

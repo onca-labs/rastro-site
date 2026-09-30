@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
-import { CONTACT_EMAIL, GTM_ID, LEGAL_ENTITY, PRIVACY_EFFECTIVE, SITE_URL } from "@/lib/site";
+import JsonLd from "@/components/JsonLd";
+import { CONTACT_EMAIL, GTM_ID, LEGAL_ENTITY, PRIVACY_EFFECTIVE } from "@/lib/site";
+import { pageGraph, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy | Rastro",
-  description: "Rastro keeps your inventory on your iPhone. It has no accounts and collects no data.",
-  alternates: { canonical: `${SITE_URL}/privacy/` },
-};
+const TITLE = "Privacy Policy | Rastro";
+const DESCRIPTION =
+  "Rastro collects no data. Your injectable inventory stays on your iPhone, with no account, no server, and no analytics in the app. Read the full policy.";
+
+export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESCRIPTION, path: "/privacy/" });
 
 /**
  * The App Store "Privacy Policy URL". Every statement describes real behavior:
@@ -16,6 +18,8 @@ export const metadata: Metadata = {
  */
 export default function PrivacyPage() {
   return (
+    <>
+    <JsonLd data={pageGraph({ title: TITLE, description: DESCRIPTION, path: "/privacy/" })} />
     <ContentPage
       title="Privacy"
       lede={`Effective ${PRIVACY_EFFECTIVE}. Rastro is made by ${LEGAL_ENTITY}.`}
@@ -75,5 +79,6 @@ export default function PrivacyPage() {
         </p>
       </section>
     </ContentPage>
+    </>
   );
 }

@@ -1,13 +1,15 @@
 import { describe, expect, test } from "vitest";
-import { SITE_URL } from "@/lib/site";
+import { GUIDES, guidePath } from "@/lib/guides";
+import { absoluteUrl } from "@/lib/seo";
 import sitemap from "./sitemap";
 
 describe("sitemap", () => {
-  test("lists every page with a trailing slash on the site URL", () => {
+  test("lists home, every guide, support, and privacy with trailing slashes", () => {
     expect(sitemap().map((entry) => entry.url)).toEqual([
-      `${SITE_URL}/`,
-      `${SITE_URL}/support/`,
-      `${SITE_URL}/privacy/`,
+      absoluteUrl("/"),
+      ...GUIDES.map((g) => absoluteUrl(guidePath(g))),
+      absoluteUrl("/support/"),
+      absoluteUrl("/privacy/"),
     ]);
   });
 });

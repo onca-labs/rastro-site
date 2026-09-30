@@ -1,7 +1,11 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import TrackedLink from "@/components/TrackedLink";
 import { EARLY_ACCESS_HREF, asset } from "@/lib/site";
+import { pageGraph, pageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
 /**
@@ -12,14 +16,24 @@ import styles from "./page.module.css";
  * Every claim here must match the app (rastro repo, docs/prd.md).
  */
 
-const FEATURES = [
+const TITLE = "Rastro: Injectable Inventory App for iPhone";
+const DESCRIPTION =
+  "Scan toxins and fillers when they arrive, record usage in seconds, and know what's open and how long it will last. Works offline, no account required.";
+
+export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESCRIPTION, path: "/" });
+
+type Feature = { title: string; body: string; link?: { href: string; label: string } };
+
+const FEATURES: readonly Feature[] = [
   {
     title: "Scan to receive",
     body: "Rastro reads the GS1 and HIBCC barcodes on the box: product, lot, expiration, and serial. If it's printed on the label, you don't type it.",
+    link: { href: "/injectable-barcode-scanner/", label: "How scanning works" },
   },
   {
     title: "Record usage in seconds",
     body: "One tap for a filler syringe. A number for toxin units. Then you're back with your patient.",
+    link: { href: "/botox-inventory-tracking/", label: "Tracking toxin by the unit" },
   },
   {
     title: "Undo instead of “are you sure?”",
@@ -28,6 +42,7 @@ const FEATURES = [
   {
     title: "Know where stock is",
     body: "Track inventory at each practice you work at, and move boxes between them.",
+    link: { href: "/med-spa-inventory-app/", label: "Rastro for med spas" },
   },
   {
     title: "See how long it will last",
@@ -36,8 +51,9 @@ const FEATURES = [
   {
     title: "A trail for every package",
     body: "Received, opened, used, moved, adjusted. Every box and vial keeps its history, filterable by product, lot, location, or date.",
+    link: { href: "/injectable-lot-tracking/", label: "Lot and expiration tracking" },
   },
-] as const;
+];
 
 const STEPS = [
   {
@@ -84,6 +100,7 @@ function SectionHead({ id, eyebrow, title, lede }: { id: string; eyebrow: string
 export default function LandingPage() {
   return (
     <div id="top">
+      <JsonLd data={pageGraph({ title: TITLE, description: DESCRIPTION, path: "/" })} />
       <SiteHeader />
 
       <main>
@@ -105,7 +122,7 @@ export default function LandingPage() {
               >
                 Get early access
               </TrackedLink>
-              <span className={styles.note}>Coming soon to iPhone. Free, no account.</span>
+              <span className={styles.note}>Coming soon to iPhone. Free, with no account required.</span>
             </div>
           </div>
           <div className={styles.phone}>
@@ -131,6 +148,11 @@ export default function LandingPage() {
               <li key={f.title} className={styles.card}>
                 <h3>{f.title}</h3>
                 <p>{f.body}</p>
+                {f.link ? (
+                  <Link href={f.link.href} className={styles.cardLink}>
+                    {f.link.label} →
+                  </Link>
+                ) : null}
               </li>
             ))}
           </ul>
@@ -178,7 +200,7 @@ export default function LandingPage() {
             </div>
             <ul className={styles.bandList}>
               <li>
-                <strong>No account.</strong> Install it and start scanning.
+                <strong>No account required.</strong> Install it and start scanning.
               </li>
               <li>
                 <strong>Works offline.</strong> No signal in the treatment room? It doesn&apos;t

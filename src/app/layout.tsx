@@ -1,31 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
-import { GTM_ID, SITE_URL, asset } from "@/lib/site";
+import { GTM_ID, asset } from "@/lib/site";
 import "./globals.css";
 
-const TITLE = "Rastro: injectable inventory for iPhone";
-const DESCRIPTION =
-  "Scan toxins and fillers when they arrive, record usage in seconds, and always know what's open, where it is, and how long it will last. Offline, no account, no patient data.";
-
+// Page metadata (title, description, canonical, social cards) comes from each
+// page via pageMetadata() in src/lib/seo.ts. Only site-wide values live here.
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  alternates: { canonical: `${SITE_URL}/` },
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    url: `${SITE_URL}/`,
-    siteName: "Rastro",
-    type: "website",
-    images: [{ url: `${SITE_URL}/images/og.png`, width: 515, height: 515 }],
-  },
-  twitter: {
-    card: "summary",
-    title: TITLE,
-    description: DESCRIPTION,
-    images: [`${SITE_URL}/images/og.png`],
-  },
+  applicationName: "Rastro",
   icons: { icon: asset("/images/mark-green.png"), apple: asset("/images/og.png") },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({

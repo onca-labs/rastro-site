@@ -184,6 +184,20 @@
   font-size: 15.5px;
 }
 
+.cardLink {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cardLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .band {
   background: var(--band-bg);
   color: var(--band-ink);

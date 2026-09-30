@@ -1,0 +1,257 @@
+/* SEO landing pages (GuidePage). Colors and type come from globals.css. */
+
+.hero,
+.section {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 72px var(--gutter);
+}
+
+.hero {
+  padding-top: 40px;
+}
+
+.section {
+  border-top: 1px solid var(--line);
+}
+
+.crumbs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+
+.crumbs a {
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.title {
+  margin: 14px 0 0;
+  max-width: 18em;
+  font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.lede {
+  margin: 22px 0 32px;
+  max-width: 40em;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.btn {
+  display: inline-flex;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn:hover {
+  filter: brightness(1.12);
+}
+
+.h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+
+.steps {
+  list-style: none;
+  margin: 36px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.steps h3,
+.card h3,
+.faqs h3 {
+  margin: 14px 0 8px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.steps p,
+.card p,
+.faqs p {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.stepNum {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.grid {
+  list-style: none;
+  margin: 36px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.card {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.tableWrap {
+  margin-top: 32px;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.table th,
+.table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.table thead th {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.table tbody th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table td {
+  color: var(--ink-2);
+}
+
+.table td:last-child {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.faqs {
+  margin-top: 20px;
+  display: grid;
+  gap: 8px;
+  max-width: 46em;
+}
+
+.faqs > div {
+  padding: 12px 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.related {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.related a {
+  display: inline-flex;
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.related a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* On phones each row becomes a stacked card, labelled from data-label, so the
+   Rastro column is never cut off. */
+@media (max-width: 640px) {
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    display: grid;
+    gap: 6px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .table th,
+  .table td {
+    padding: 0;
+    border: 0;
+  }
+
+  .table tbody th {
+    white-space: normal;
+    margin-bottom: 4px;
+  }
+
+  .table td::before {
+    content: attr(data-label) ": ";
+    color: var(--ink-3);
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 860px) {
+  .steps,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .hero {
+    padding-top: 28px;
+  }
+}

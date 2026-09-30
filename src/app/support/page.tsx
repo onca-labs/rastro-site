@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
+import JsonLd from "@/components/JsonLd";
 import TrackedLink from "@/components/TrackedLink";
-import { CONTACT_EMAIL, SITE_URL } from "@/lib/site";
+import { CONTACT_EMAIL } from "@/lib/site";
+import { pageGraph, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Support | Rastro",
-  description: "Get help with Rastro, the injectable inventory app for iPhone.",
-  alternates: { canonical: `${SITE_URL}/support/` },
-};
+const TITLE = "Support and FAQ | Rastro";
+const DESCRIPTION =
+  "Get help with Rastro, the injectable inventory app for iPhone: reporting barcodes, working offline, where your data is stored, and sharing with a team.";
+
+export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESCRIPTION, path: "/support/" });
 
 /** The App Store "Support URL". Answers here must match the app's behavior. */
 export default function SupportPage() {
   return (
+    <>
+    <JsonLd data={pageGraph({ title: TITLE, description: DESCRIPTION, path: "/support/" })} />
     <ContentPage
       title="Support"
       lede={
@@ -63,5 +67,6 @@ export default function SupportPage() {
         </p>
       </section>
     </ContentPage>
+    </>
   );
 }
