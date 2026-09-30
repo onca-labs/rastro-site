@@ -1,0 +1,267 @@
+/* Landing page. Colors and type come from the tokens in globals.css. */
+
+.hero {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 72px var(--gutter) 88px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.title {
+  margin: 14px 0 0;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+.lede {
+  margin: 22px 0 0;
+  max-width: 34em;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.actions {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: transform 150ms ease, filter 150ms ease;
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.note {
+  color: var(--ink-3);
+  font-size: 15px;
+}
+
+.phone {
+  justify-self: center;
+  width: min(320px, 100%);
+  padding: 10px;
+  border-radius: 48px;
+  background: #0b0f0e;
+  box-shadow: var(--shadow);
+}
+
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 38px;
+}
+
+.section {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 88px var(--gutter);
+  border-top: 1px solid var(--line);
+}
+
+.sectionHead {
+  max-width: 44em;
+}
+
+.cta .sectionHead {
+  margin: 0 auto;
+}
+
+.sectionHead .eyebrow {
+  margin-bottom: 12px;
+}
+
+.steps {
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.step h3 {
+  margin: 16px 0 8px;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+.step p {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.stepNum {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.bandEyebrow {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--band-ink-2);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+
+.sectionLede {
+  margin: 16px 0 0;
+  max-width: 40em;
+  font-size: 18px;
+  color: var(--ink-2);
+}
+
+.grid {
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  padding: 26px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.card p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 15.5px;
+}
+
+.band {
+  background: var(--band-bg);
+  color: var(--band-ink);
+}
+
+.bandInner {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 88px var(--gutter);
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.bandTitle {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+
+.bandList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+  font-size: 18px;
+  color: var(--band-ink-2);
+}
+
+.bandList strong {
+  color: var(--band-ink);
+}
+
+.cta {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 88px var(--gutter) 104px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta .sectionLede {
+  margin: 16px auto 30px;
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .bandInner,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 48px;
+    gap: 48px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section,
+  .bandInner,
+  .cta {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}

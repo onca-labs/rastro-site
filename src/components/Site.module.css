@@ -1,0 +1,158 @@
+/* Shared chrome (header, footer) and the prose column for content pages. */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.headerInner,
+.footerInner {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 14px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.brand img {
+  display: block;
+}
+
+.nav,
+.footerNav {
+  display: flex;
+  gap: 22px;
+}
+
+.nav {
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.headerCta {
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.headerCta:hover {
+  filter: brightness(1.12);
+}
+
+@media (max-width: 760px) {
+  .nav {
+    display: none;
+  }
+}
+
+.nav a,
+.footerNav a {
+  color: var(--ink-2);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav a:hover,
+.footerNav a:hover {
+  color: var(--ink);
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
+.footerInner {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.footerBrand {
+  display: grid;
+  gap: 10px;
+}
+
+.tagline {
+  margin: 0;
+  max-width: 30em;
+  color: var(--ink-2);
+}
+
+.copyright {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 36px;
+}
+
+.copyright a {
+  color: var(--ink-3);
+}
+
+.prose {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px var(--gutter) 96px;
+  font-size: 17px;
+  color: var(--ink-2);
+}
+
+.prose h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.prose h2 {
+  margin: 44px 0 10px;
+  color: var(--ink);
+  font-size: 21px;
+  letter-spacing: -0.01em;
+}
+
+.prose p,
+.prose ul {
+  margin: 0 0 14px;
+}
+
+.prose li {
+  margin-bottom: 6px;
+}
+
+.prose a {
+  color: var(--accent);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.lede {
+  margin-top: 16px !important;
+  font-size: 19px;
+}
