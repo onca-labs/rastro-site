@@ -20,7 +20,7 @@ The same setup as `onca-labs` (oncalabs.io), adapted to Pages:
 
 - Next.js 15 App Router with `output: "export"`, React 19, TypeScript, Yarn 4.
 - Rastro brand tokens in `src/app/globals.css` (colors from the app's asset
-  catalog, light and dark) + CSS Modules. No Tailwind.
+  catalog, light only) + CSS Modules. No Tailwind.
 - GTM/GA4 via `@next/third-parties`, `TrackedLink` / `pushEvent` for events.
 - Metadata, Open Graph, and `sitemap.xml`.
 

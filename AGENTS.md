@@ -32,6 +32,6 @@ deploy, and the analytics contract.
 - **Analytics is a contract**: event names and anchor ids in README.md;
   `page.test.tsx` guards them.
 - Tokens + CSS Modules only; no Tailwind, no hardcoded colors outside
-  `globals.css`. Support light and dark mode.
+  `globals.css`. Light only: white background, no dark mode.
 - Copy voice: plain and specific. Avoid em-dashes in user-facing copy.
 - Never commit secrets: this repo is public.

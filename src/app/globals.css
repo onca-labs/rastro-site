@@ -1,15 +1,15 @@
-/* Rastro brand tokens + base resets. Colors come from the app's asset catalog
-   (AccentColor / RastroInk in the rastro repo): brand green #0D3F3B, ivory
-   #F4F1E9, and the lifted green #38948D the app uses in dark mode. */
+/* Rastro brand tokens + base resets. Light only: the site stays on a white
+   background whatever the visitor's dark-mode setting. Colors come from the
+   app's asset catalog (AccentColor / RastroInk in the rastro repo): brand
+   green #0D3F3B and ivory #F4F1E9. */
 
 :root {
+  color-scheme: light;
   --green: #0d3f3b;
-  --green-deep: #082b28;
-  --green-lift: #38948d;
   --ivory: #f4f1e9;
 
-  --bg: #fbfaf6;
-  --surface: #ffffff;
+  --bg: #ffffff;
+  --surface: #fbfaf6;
   --surface-2: var(--ivory);
   --ink: #16211f;
   --ink-2: #4d5b58;
@@ -20,7 +20,7 @@
   --band-bg: var(--green);
   --band-ink: var(--ivory);
   --band-ink-2: #b9cbc7;
-  --focus-ring: color-mix(in srgb, var(--green-lift) 55%, transparent);
+  --focus-ring: color-mix(in srgb, var(--green) 35%, transparent);
   --shadow: 0 24px 60px -30px rgba(13, 63, 59, 0.45);
 
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -29,21 +29,6 @@
   --gutter: 24px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0c1413;
-    --surface: #132020;
-    --surface-2: #172726;
-    --ink: #eef0ea;
-    --ink-2: #b3bdb9;
-    --ink-3: #85918d;
-    --line: #22312f;
-    --accent: var(--green-lift);
-    --on-accent: #ffffff;
-    --band-bg: #102c29;
-    --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
-  }
-}
 
 *,
 *::before,
