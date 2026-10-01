@@ -119,6 +119,22 @@ export default function GuidePage({ guide }: { guide: Guide }) {
                 </tbody>
               </table>
             </div>
+            {comparison.sources ? (
+              <div className={styles.sources}>
+                <p>
+                  Checked {comparison.sources.asOf}. {comparison.sources.note}
+                </p>
+                <ul>
+                  {comparison.sources.links.map((l) => (
+                    <li key={l.href}>
+                      <a href={l.href} rel="nofollow noopener" target="_blank">
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </section>
         ) : null}
 

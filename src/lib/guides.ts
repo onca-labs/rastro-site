@@ -6,6 +6,11 @@
  * Every claim must match the app: check the rastro repo's docs/prd.md before
  * adding or changing one. Don't describe features that aren't built, and say
  * plainly what Rastro doesn't do (sync, imports, recall lookups).
+ *
+ * Comparison pages name other companies' products. Every claim about them must
+ * come from that company's own public docs, listed in `comparison.sources`
+ * with the date checked. Where their docs are silent, say "not covered in
+ * their guides", never "can't". Re-check them when updating `asOf`.
  */
 
 export type Guide = {
@@ -28,11 +33,21 @@ export type Guide = {
   steps: readonly { title: string; body: string }[];
   pointsTitle: string;
   points: readonly { title: string; body: string }[];
-  /** Optional side-by-side comparison (the spreadsheet page). */
+  /** "comparison" pages compare Rastro with another product; they're listed
+   *  apart from the feature guides (footer "Compare" column, not the home grid). */
+  kind?: "comparison";
+  /** Optional side-by-side comparison (the spreadsheet and competitor pages). */
   comparison?: {
     title: string;
     columns: readonly [string, string, string];
     rows: readonly (readonly [string, string, string])[];
+    /** Required when the comparison names another company's product: every
+     *  claim about it must be traceable to these pages, checked on `asOf`. */
+    sources?: {
+      asOf: string;
+      note: string;
+      links: readonly { label: string; href: string }[];
+    };
   };
   faqs: readonly { q: string; a: string }[];
 };
@@ -420,7 +435,281 @@ export const GUIDES: readonly Guide[] = [
       },
     ],
   },
+  {
+    slug: "jane-app-inventory",
+    kind: "comparison",
+    screenshot: {
+      src: "/images/guide-toxin.webp",
+      alt: "Rastro Botox package detail showing remaining units, lot, and expiration.",
+      caption: "Each vial keeps its own unit count, lot, and expiration.",
+    },
+    navLabel: "Rastro vs. Jane App",
+    title: "Jane App Inventory vs. Rastro for Injectables | Rastro",
+    description:
+      "How Jane App's product inventory compares with Rastro for Botox and filler: lot numbers, expiration dates, units per vial, and barcode scanning.",
+    eyebrow: "Rastro vs. Jane App",
+    h1: "Use Jane for the practice. Use Rastro for the vials.",
+    lede: "Jane App runs booking, charting, and billing for many clinics, and it includes product inventory built around products sold at checkout. Rastro does one job: tracking injectables by the vial, the unit, and the lot. You don't have to choose between them.",
+    stepsTitle: "Using both",
+    steps: [
+      {
+        title: "Keep Jane for patients",
+        body: "Booking, charting, and billing stay in Jane, where your patient records belong. Rastro never holds patient information.",
+      },
+      {
+        title: "Track the stock in Rastro",
+        body: "Scan deliveries in, open vials, and record units or syringes as you use them, on your iPhone.",
+      },
+      {
+        title: "Check one against the other",
+        body: "Filter Rastro's activity to a clinic day to compare with your charts, and export inventory and activity to CSV.",
+      },
+    ],
+    comparison: {
+      title: "Injectable inventory: Jane App vs. Rastro",
+      columns: ["", "Jane App", "Rastro"],
+      rows: [
+        ["Built for", "Practice management, with inventory for products you sell", "Injectable inventory only"],
+        ["Lot numbers and expiration dates", "Not covered in Jane's product inventory guides", "Read from the barcode and kept for every package"],
+        ["Toxin units", "Set up as a billable product, such as Botox per unit", "Each vial's remaining units, counted down as you record"],
+        ["Open vials", "Not covered in Jane's guides", "Each open vial has its own row, with a reminder if usage isn't recorded"],
+        ["Barcode scanning", "A barcode scanner can enter a product's code for quick checkout", "The iPhone camera reads GS1 and HIBCC barcodes: product, lot, expiration, and serial"],
+        ["On your phone", "No staff app; the staff side runs in Safari", "A native iPhone app that works offline"],
+        ["Reordering", "A reorder threshold puts the product on the Inventory Report", "Days of supply from your own pace, with low-supply flags"],
+        ["Cost", "Part of a monthly Jane subscription", "Planned to be free"],
+      ],
+      sources: {
+        asOf: "October 1, 2026",
+        note: "Based on Jane App's public help guides. Jane's features change, so check its current guides. Jane App is a trademark of its owner, and Rastro isn't affiliated with Jane.",
+        links: [
+          { label: "Creating a product", href: "https://jane.app/guide/creating-a-product" },
+          { label: "Billing per unit", href: "https://jane.app/guide/billing-for-per-unit-mileage-botox-materials-used-reporting-etc" },
+          { label: "Jane's mobile app FAQ", href: "https://jane.app/guide/jane-s-mobile-app-for-clients-faq" },
+          { label: "Using Jane on a smartphone", href: "https://jane.app/guide/using-jane-on-a-smartphone" },
+        ],
+      },
+    },
+    pointsTitle: "Why a separate app for injectables",
+    points: [
+      {
+        title: "Lots travel with every unit",
+        body: "Units recorded against a vial stay tied to that vial's lot, so checking a recalled lot is a search in Activity.",
+      },
+      {
+        title: "Scan instead of type",
+        body: "The lot, expiration date, and serial come off the box's barcode instead of being typed into a product record.",
+      },
+      {
+        title: "Built for the treatment room",
+        body: "Recording usage takes a couple of taps on the phone in your pocket, with or without a signal.",
+      },
+      {
+        title: "No patient data to protect",
+        body: "Rastro tracks products only, so it sits beside Jane without adding another place patient information lives.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Does Rastro integrate with Jane App?",
+        a: "No. Rastro doesn't connect to other software. It works alongside Jane: patients, charting, and billing in Jane, injectable stock in Rastro.",
+      },
+      {
+        q: "Does Jane App track lot numbers for injectables?",
+        a: "We couldn't find lot or expiration tracking in Jane's product inventory guides as of October 1, 2026. Jane's features change, so check its current guides.",
+      },
+      {
+        q: "Should I stop using Jane's inventory?",
+        a: "Not necessarily. Jane's inventory still suits retail products you sell at checkout. Rastro is for the injectables you use in treatment.",
+      },
+    ],
+  },
+  {
+    slug: "boulevard-inventory",
+    kind: "comparison",
+    screenshot: {
+      src: "/images/guide-lot.webp",
+      alt: "Rastro Activity showing package receipts and usage with lot numbers.",
+      caption: "Every package keeps its lot from delivery to the last unit.",
+    },
+    navLabel: "Rastro vs. Boulevard",
+    title: "Boulevard Inventory vs. Rastro for Injectables | Rastro",
+    description:
+      "How Boulevard's inventory compares with Rastro for Botox and filler: expiration dates, lot numbers, units per vial, and barcode scanning on iPhone.",
+    eyebrow: "Rastro vs. Boulevard",
+    h1: "Boulevard runs the spa. Rastro tracks the injectables.",
+    lede: "Boulevard handles booking, checkout, and charting for spas and med spas, and its inventory follows retail sales and product usage. Rastro does one job: tracking injectables by the vial, the unit, the lot, and the expiration date.",
+    stepsTitle: "Using both",
+    steps: [
+      {
+        title: "Keep Boulevard for clients",
+        body: "Appointments, checkout, and charting stay in Boulevard. Rastro never holds client or patient information.",
+      },
+      {
+        title: "Track injectables in Rastro",
+        body: "Scan boxes in as they arrive, open vials, and record units or syringes as you use them, on your iPhone.",
+      },
+      {
+        title: "Check one against the other",
+        body: "Filter Rastro's activity to a day or a range to compare with your services, and export it to CSV.",
+      },
+    ],
+    comparison: {
+      title: "Injectable inventory: Boulevard vs. Rastro",
+      columns: ["", "Boulevard", "Rastro"],
+      rows: [
+        ["Built for", "Spa and med spa management, with inventory for retail and products used in services", "Injectable inventory only"],
+        ["Expiration dates", "Can't be tracked on products, according to Boulevard's help center", "Read from the barcode, with packages expiring within 60 days flagged"],
+        ["Lot numbers", "Not covered in Boulevard's inventory guides", "Kept for every package and searchable in Activity"],
+        ["Toxin units", "An expected number of units per service, for usage-based pricing on Premier and Enterprise plans", "Each vial's remaining units, counted down as you record"],
+        ["Barcode scanning", "A USB 1D/2D scanner on a computer, for SKU and UPC codes", "The iPhone camera reads GS1 and HIBCC barcodes: product, lot, expiration, and serial"],
+        ["On your phone", "The Professional app covers appointments, charting, and checkout", "A native iPhone app for inventory that works offline"],
+        ["Moving stock between locations", "Not covered in Boulevard's guides", "Move a box or vial, or scan a bag of boxes in Move mode"],
+        ["Cost", "Part of a monthly Boulevard subscription", "Planned to be free"],
+      ],
+      sources: {
+        asOf: "October 1, 2026",
+        note: "Based on Boulevard's public help center. Boulevard's features change, so check its current articles. Boulevard is a trademark of its owner, and Rastro isn't affiliated with Boulevard.",
+        links: [
+          { label: "Products and inventory", href: "https://support.boulevard.io/en/articles/5941416-products-and-inventory" },
+          { label: "Tracking products used during services", href: "https://support.boulevard.io/en/articles/5941350-tracking-and-charging-for-products-used-during-services" },
+          { label: "Hardware recommendations", href: "https://support.boulevard.io/en/articles/6047189-hardware-recommendations-testing" },
+          { label: "Professional app", href: "https://support.boulevard.io/en/articles/9180930-professional-app" },
+        ],
+      },
+    },
+    pointsTitle: "Why a separate app for injectables",
+    points: [
+      {
+        title: "Expiration in view",
+        body: "Every package carries its expiration date, and anything expiring within 60 days is called out on the Inventory screen.",
+      },
+      {
+        title: "Lots you can look up",
+        body: "Type part of a lot number in Activity to see every package from that lot: received, used, moved, or still on hand.",
+      },
+      {
+        title: "Scan with the phone you have",
+        body: "No USB scanner or computer needed. The iPhone camera reads the barcode on the box, in any orientation.",
+      },
+      {
+        title: "Works where the signal doesn't",
+        body: "Every feature works offline, so a dead zone in the treatment room doesn't stop anyone recording usage.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Does Rastro integrate with Boulevard?",
+        a: "No. Rastro doesn't connect to other software. It works alongside Boulevard: clients and checkout in Boulevard, injectable stock in Rastro.",
+      },
+      {
+        q: "Can Boulevard track expiration dates for injectables?",
+        a: "As of October 1, 2026, Boulevard's help center says expiration dates can't be tracked or added to products. Boulevard's features change, so check its current articles.",
+      },
+      {
+        q: "Should I stop using Boulevard's inventory?",
+        a: "Not necessarily. Boulevard's inventory still suits retail products and checkout. Rastro is for the injectables you use in treatment.",
+      },
+    ],
+  },
+  {
+    slug: "aesthetic-record-inventory",
+    kind: "comparison",
+    screenshot: {
+      src: "/images/guide-barcode.webp",
+      alt: "Rastro barcode lookup result for Botox Cosmetic 100U, with lot and expiration filled in.",
+      caption: "Lot and expiration filled in from the barcode on the box.",
+    },
+    navLabel: "Rastro vs. Aesthetic Record",
+    title: "Aesthetic Record Inventory vs. Rastro | Rastro",
+    description:
+      "Aesthetic Record tracks injectable lots inside its EMR. See how Rastro compares: barcode scanning, iPhone use, offline tracking, and no account required.",
+    eyebrow: "Rastro vs. Aesthetic Record",
+    h1: "EMR inventory, or inventory in your pocket?",
+    lede: "Aesthetic Record is an EMR built for aesthetic practices, and its inventory handles injectables: stock by the unit, lots chosen when charting, and transfers between clinics. Rastro is narrower. It's an iPhone app that scans boxes in, works offline, and has no account required.",
+    stepsTitle: "Where each one fits",
+    steps: [
+      {
+        title: "Charting in Aesthetic Record?",
+        body: "Charting a treatment there deducts the stock, so its inventory may be all you need.",
+      },
+      {
+        title: "Want to scan, not type?",
+        body: "Rastro reads the lot and expiration date from the box's barcode, so receiving a delivery is one scan per box.",
+      },
+      {
+        title: "Working across practices?",
+        body: "Rastro keeps your own count of stock across the places you work, whatever software each practice runs.",
+      },
+    ],
+    comparison: {
+      title: "Injectable inventory: Aesthetic Record vs. Rastro",
+      columns: ["", "Aesthetic Record", "Rastro"],
+      rows: [
+        ["Built for", "An EMR for aesthetic practices, with injectable inventory", "Injectable inventory only"],
+        ["Lot numbers and expiration", "Entered for each batch; the provider picks the lot when charting", "Read from the barcode when you scan the box"],
+        ["Toxin units", "Stock kept in units and deducted when a treatment is charted", "Each vial's remaining units, counted down as you record"],
+        ["Open vials", "Not covered in Aesthetic Record's inventory guides", "Each open vial has its own row, with a reminder if usage isn't recorded"],
+        ["Barcode scanning", "Not covered in Aesthetic Record's inventory guides", "The iPhone camera reads GS1 and HIBCC barcodes"],
+        ["Managing stock", "Added and edited in the web portal", "Received, used, and moved on your iPhone"],
+        ["Works offline", "Not covered in Aesthetic Record's inventory guides", "Yes, every feature"],
+        ["Moving stock between locations", "Stock transfers between clinics", "Move a box or vial between locations"],
+        ["Ordering and alerts", "Purchase orders and low-stock alerts", "Low-supply flags from days of supply; no ordering"],
+        ["Getting started", "A practice account and subscription", "Install and scan, with no account required"],
+      ],
+      sources: {
+        asOf: "October 1, 2026",
+        note: "Based on Aesthetic Record's public help center. Its features change, so check its current articles. Aesthetic Record is a trademark of its owner, and Rastro isn't affiliated with it.",
+        links: [
+          { label: "Stock management", href: "https://learn.aestheticrecord.com/en/articles/9268485-stock-management" },
+          { label: "Traceability when charting", href: "https://learn.aestheticrecord.com/en/articles/9247099-add-traceability-information-to-a-procedure" },
+          { label: "Managing services in inventory", href: "https://learn.aestheticrecord.com/en/articles/11045732-add-manage-services-in-your-inventory" },
+          { label: "Stock transfers", href: "https://learn.aestheticrecord.com/en/articles/9264726-stock-transfer-between-clinics" },
+          { label: "Stock alerts", href: "https://learn.aestheticrecord.com/en/articles/9248114-stock-alerts" },
+          { label: "Purchase orders", href: "https://learn.aestheticrecord.com/en/articles/9298442-add-in-your-suppliers-and-purchase-orders" },
+        ],
+      },
+    },
+    pointsTitle: "What Rastro adds",
+    points: [
+      {
+        title: "Scanning built in",
+        body: "Lot, expiration, and serial come off GS1 and HIBCC barcodes, so there's nothing to copy off the label.",
+      },
+      {
+        title: "Open vials tracked",
+        body: "Each open vial is its own row with its remaining units, and Rastro reminds you when usage hasn't been recorded.",
+      },
+      {
+        title: "On the phone, offline",
+        body: "Receive, use, and move stock from your iPhone, with or without a connection.",
+      },
+      {
+        title: "No setup",
+        body: "No account, no onboarding, and no patient records. Install it and scan what's on the shelf.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Does Rastro integrate with Aesthetic Record?",
+        a: "No. Rastro doesn't connect to other software. If you chart in Aesthetic Record, Rastro is a separate count of your injectable stock.",
+      },
+      {
+        q: "Does Aesthetic Record support barcode scanning?",
+        a: "We couldn't find barcode scanning in Aesthetic Record's inventory guides as of October 1, 2026. Its features change, so check its current help center.",
+      },
+      {
+        q: "Is Rastro an EMR?",
+        a: "No. Rastro has no patient records, charting, or billing. It only tracks injectable inventory.",
+      },
+    ],
+  },
 ] as const;
+
+/** Feature guides: the home page grid and the footer's Features column. */
+export const FEATURE_GUIDES = GUIDES.filter((g) => g.kind !== "comparison");
+
+/** Competitor comparisons: the footer's Compare column. */
+export const COMPARISON_GUIDES = GUIDES.filter((g) => g.kind === "comparison");
 
 export function findGuide(slug: string): Guide | undefined {
   return GUIDES.find((g) => g.slug === slug);

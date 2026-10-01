@@ -42,7 +42,7 @@ describe("LandingPage", () => {
   test("keeps every tracked anchor id on the page", () => {
     const { container } = render(<LandingPage />);
 
-    for (const id of ["top", "features", "how", "who", "privacy-first", "early-access"]) {
+    for (const id of ["top", "features", "how", "who", "compare", "privacy-first", "early-access"]) {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     }
   });

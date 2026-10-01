@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GUIDES, guidePath } from "@/lib/guides";
+import { COMPARISON_GUIDES, FEATURE_GUIDES, guidePath } from "@/lib/guides";
 import { COMPANY_URL, LEGAL_ENTITY } from "@/lib/site";
 import Brand from "./Brand";
 import styles from "./Site.module.css";
@@ -20,7 +20,15 @@ export default function SiteFooter() {
         <div className={styles.footerCols}>
           <nav className={styles.footerCol} aria-label="Features">
             <p className={styles.footerHead}>Features</p>
-            {GUIDES.map((g) => (
+            {FEATURE_GUIDES.map((g) => (
+              <Link key={g.slug} href={guidePath(g)}>
+                {g.navLabel}
+              </Link>
+            ))}
+          </nav>
+          <nav className={styles.footerCol} aria-label="Compare">
+            <p className={styles.footerHead}>Compare</p>
+            {COMPARISON_GUIDES.map((g) => (
               <Link key={g.slug} href={guidePath(g)}>
                 {g.navLabel}
               </Link>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContentPage from "@/components/ContentPage";
-import { GUIDES, guidePath } from "@/lib/guides";
+import { FEATURE_GUIDES, guidePath } from "@/lib/guides";
 import { pageMetadata } from "@/lib/seo";
 
 // GitHub Pages serves the exported 404.html for any unknown path. noindex keeps
@@ -22,7 +22,7 @@ export default function NotFound() {
           <Link href="/">Go to the Rastro home page</Link>, or try one of these:
         </p>
         <ul>
-          {GUIDES.map((g) => (
+          {FEATURE_GUIDES.map((g) => (
             <li key={g.slug}>
               <Link href={guidePath(g)}>{g.navLabel}</Link>
             </li>

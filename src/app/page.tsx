@@ -5,13 +5,13 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import TrackedLink from "@/components/TrackedLink";
 import { EARLY_ACCESS_HREF, asset } from "@/lib/site";
-import { GUIDES, guidePath } from "@/lib/guides";
+import { COMPARISON_GUIDES, FEATURE_GUIDES, guidePath } from "@/lib/guides";
 import { faqPage, pageGraph, pageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
 /**
  * Tracking contract (GTM): `request_access` (with `location`) on every
- * early-access CTA, and the anchor ids `top`, `features`, `how`, `who`,
+ * early-access CTA, and the anchor ids `top`, `features`, `how`, `who`, `compare`,
  * `privacy-first`, `early-access`. `page.test.tsx` asserts both.
  *
  * Every claim here must match the app (rastro repo, docs/prd.md).
@@ -80,6 +80,10 @@ const FAQS = [
   {
     q: "Does Rastro work offline, and can I export my inventory?",
     a: "Yes. Core inventory tracking works offline without an account. You can export inventory and activity to CSV from Settings. Rastro tracks products, not patient records.",
+  },
+  {
+    q: "Does Rastro replace Jane App, Boulevard, or my EMR?",
+    a: "No. Rastro only tracks injectable inventory, with no patient records, charting, or billing. Keep your practice software for patients and use Rastro for the vials. It doesn't connect to other software.",
   },
   {
     q: "Is Rastro available on the App Store?",
@@ -284,10 +288,28 @@ export default function LandingPage() {
           <SectionHead id="guides-heading" eyebrow="Inventory guides" title="Start with the stock you manage."
             lede="Explore the workflow for your products, from receiving a box to reviewing its history." />
           <ul className={styles.grid}>
-            {GUIDES.map((guide) => (
+            {FEATURE_GUIDES.map((guide) => (
               <li className={styles.card} key={guide.slug}>
                 <h3><Link className={styles.guideLink} href={guidePath(guide)}>{guide.navLabel} →</Link></h3>
                 <p>{guide.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className={styles.section} id="compare" aria-labelledby="compare-heading">
+          <SectionHead
+            id="compare-heading"
+            eyebrow="Already have practice software?"
+            title="Keep your EMR. Add Rastro for the vials."
+            lede="Practice platforms run booking, charting, and billing. Their inventory is often built around retail products. See how each compares with Rastro for injectables."
+          />
+          <ul className={styles.compareLinks}>
+            {COMPARISON_GUIDES.map((guide) => (
+              <li key={guide.slug}>
+                <Link className={styles.cardLink} href={guidePath(guide)}>
+                  {guide.navLabel} →
+                </Link>
               </li>
             ))}
           </ul>

@@ -310,3 +310,16 @@
   .equation { flex-direction: column; }
   .result { width: 100%; }
 }
+
+.compareLinks {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+
+.compareLinks .cardLink {
+  margin-top: 0;
+}

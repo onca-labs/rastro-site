@@ -95,5 +95,5 @@ optimization. The early-access CTA is a `mailto:` link for that reason.
 | `request_access` | an early-access CTA is clicked | `location` (`header`, `hero`, `footer_cta`, `guide_<slug>`) |
 | `contact_click` | the support email is clicked | `location` |
 
-Anchor ids `top`, `features`, `how`, `who`, `privacy-first`, `early-access` are asserted by
+Anchor ids `top`, `features`, `how`, `who`, `compare`, `privacy-first`, `early-access` are asserted by
 `page.test.tsx`. Each event needs a GTM trigger to reach GA4.
