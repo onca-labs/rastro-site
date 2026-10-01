@@ -25,6 +25,19 @@ describe("LandingPage", () => {
     }
   });
 
+  test("FAQ structured data matches the answers available on the page", () => {
+    const { container } = render(<LandingPage />);
+    const graph = JSON.parse(container.querySelector('script[type="application/ld+json"]')!.textContent!);
+    const faq = graph["@graph"].find((node: { "@type": string }) => node["@type"] === "FAQPage");
+    const answers = container.querySelectorAll("#faq details");
+    expect(faq.mainEntity).toHaveLength(answers.length);
+    expect(answers.length).toBeGreaterThan(0);
+    faq.mainEntity.forEach((item: { name: string; acceptedAnswer: { text: string } }, index: number) => {
+      expect(answers[index].querySelector("summary")?.textContent).toBe(item.name);
+      expect(answers[index].querySelector("p")?.textContent).toBe(item.acceptedAnswer.text);
+    });
+  });
+
   // GTM keys triggers off these ids, so a rename silently breaks tracking.
   test("keeps every tracked anchor id on the page", () => {
     const { container } = render(<LandingPage />);

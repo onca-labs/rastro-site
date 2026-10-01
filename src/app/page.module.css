@@ -71,7 +71,7 @@
   width: min(320px, 100%);
   padding: 10px;
   border-radius: 48px;
-  background: #0b0f0e;
+  background: var(--phone-frame);
   box-shadow: var(--shadow);
 }
 
@@ -278,4 +278,35 @@
     padding-top: 64px;
     padding-bottom: 64px;
   }
+}
+
+.productPreview { margin: 0; justify-self: center; max-width: 340px; }
+.productPreview figcaption, .supplyExample figcaption {
+  margin-top: 18px;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.productPreview figcaption { text-align: center; }
+.supplyExample {
+  margin: 32px 0 0;
+  padding: clamp(20px, 4vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.equation { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.equation div { display: grid; text-align: center; gap: 4px; }
+.equation strong { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1; color: var(--accent); }
+.equation span { color: var(--ink-2); }
+.operator { font-size: 28px; }
+.result { padding: 20px; border-radius: var(--radius); background: var(--surface-2); }
+.guideLink { color: var(--accent); text-decoration: none; }
+.guideLink:hover { text-decoration: underline; }
+.faqs { margin-top: 32px; border-top: 1px solid var(--line); }
+.faqs details { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.faqs summary { cursor: pointer; font-size: 18px; font-weight: 600; }
+.faqs p { max-width: 48em; margin: 14px 0 0; color: var(--ink-2); }
+@media (max-width: 560px) {
+  .equation { flex-direction: column; }
+  .result { width: 100%; }
 }

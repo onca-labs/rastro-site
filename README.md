@@ -25,7 +25,11 @@ https://onca-labs.github.io/rastro-site/
   or if two pages share a title or description. Add new routes to that test.
 - **Structured data**: every page renders a JSON-LD graph (`pageGraph()`):
   Organization, WebSite, MobileApplication, and the WebPage; guides add
-  BreadcrumbList and FAQPage.
+  BreadcrumbList and FAQPage. The homepage also includes FAQPage markup, generated
+  from the same questions and answers as its visible FAQ section.
+- **Homepage content**: the supply graphic is an illustrative calculation, not a
+  customer outcome. Keep numerical examples labeled and grounded in the app's
+  supply logic; do not imply measured savings without evidence.
 - **Guides**: add one by adding an entry to `GUIDES` in `src/lib/guides.ts`.
   The route, metadata, sitemap entry, footer link, and related links all
   follow. Check every claim against the app's PRD first.
