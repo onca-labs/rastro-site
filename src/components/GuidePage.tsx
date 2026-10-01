@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { GUIDES, guidePath, type Guide } from "@/lib/guides";
-import { EARLY_ACCESS_HREF } from "@/lib/site";
+import { EARLY_ACCESS_HREF, asset } from "@/lib/site";
 import { breadcrumbs, faqPage, pageGraph } from "@/lib/seo";
 import JsonLd from "./JsonLd";
 import SiteFooter from "./SiteFooter";
@@ -39,17 +39,40 @@ export default function GuidePage({ guide }: { guide: Guide }) {
             <span aria-hidden="true">/</span>
             <span aria-current="page">{guide.navLabel}</span>
           </nav>
-          <p className={styles.eyebrow}>{guide.eyebrow}</p>
-          <h1 className={styles.title}>{guide.h1}</h1>
-          <p className={styles.lede}>{guide.lede}</p>
-          <TrackedLink
-            href={EARLY_ACCESS_HREF}
-            className={styles.btn}
-            event="request_access"
-            eventParams={{ location: `guide_${guide.slug}` }}
-          >
-            Get early access
-          </TrackedLink>
+          <div className={styles.heroGrid}>
+            <div>
+              <p className={styles.eyebrow}>{guide.eyebrow}</p>
+              <h1 className={styles.title}>{guide.h1}</h1>
+              <p className={styles.lede}>{guide.lede}</p>
+              <TrackedLink
+                href={EARLY_ACCESS_HREF}
+                className={styles.btn}
+                event="request_access"
+                eventParams={{ location: `guide_${guide.slug}` }}
+              >
+                Get early access
+              </TrackedLink>
+              <p className={styles.availability}>Coming soon to iPhone. Explore a preview below.</p>
+            </div>
+            <figure className={styles.preview}>
+              <div className={styles.previewStage}>
+                <span className={styles.previewLabel}>Inside Rastro</span>
+                <a className={styles.phone} href={asset(guide.screenshot.src)} aria-label={`View full-size screenshot: ${guide.navLabel}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={asset(guide.screenshot.src)}
+                    alt={guide.screenshot.alt}
+                    width={804}
+                    height={1748}
+                  />
+                </a>
+              </div>
+              <figcaption>
+                {guide.screenshot.caption}
+                <span>Actual app screen. Demo inventory. Tap to enlarge.</span>
+              </figcaption>
+            </figure>
+          </div>
         </section>
 
         <section className={styles.section} aria-labelledby="steps-heading">

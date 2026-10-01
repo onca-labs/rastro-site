@@ -33,6 +33,11 @@ https://onca-labs.github.io/rastro-site/
 - **Guides**: add one by adding an entry to `GUIDES` in `src/lib/guides.ts`.
   The route, metadata, sitemap entry, footer link, and related links all
   follow. Check every claim against the app's PRD first.
+- **Guide screenshots**: each guide declares its own image, alt text, and caption
+  in `src/lib/guides.ts`. `public/images/guide-*.webp` are actual iPhone 17
+  simulator captures from Rastro using in-memory demo data (September 30, 2026),
+  compressed to 804 × 1748. The barcode screen uses a manually entered sample
+  GS1 barcode; it does not show a live camera scan. Tap an image to enlarge it.
 - **Social preview**: `public/images/og-card.png`, rendered by
   `node scripts/og-image.mjs`. Re-run it after changing the logo, screenshot,
   or its copy.

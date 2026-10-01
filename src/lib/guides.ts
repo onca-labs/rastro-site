@@ -19,6 +19,11 @@ export type Guide = {
   eyebrow: string;
   h1: string;
   lede: string;
+  screenshot: {
+    src: string;
+    alt: string;
+    caption: string;
+  };
   stepsTitle: string;
   steps: readonly { title: string; body: string }[];
   pointsTitle: string;
@@ -35,6 +40,11 @@ export type Guide = {
 export const GUIDES: readonly Guide[] = [
   {
     slug: "botox-inventory-tracking",
+    screenshot: {
+      src: "/images/guide-toxin.webp",
+      alt: "Rastro Botox package detail showing remaining units, lot, and expiration.",
+      caption: "See the units left in a vial, with its lot and expiration.",
+    },
     navLabel: "Botox and neurotoxins",
     title: "Botox Inventory Tracking App for Injectors | Rastro",
     description:
@@ -93,6 +103,11 @@ export const GUIDES: readonly Guide[] = [
   },
   {
     slug: "dermal-filler-inventory",
+    screenshot: {
+      src: "/images/guide-filler.webp",
+      alt: "Rastro inventory filtered to fillers, showing an open RHA 3 box and syringe counts.",
+      caption: "Open boxes and remaining syringes, together in one view.",
+    },
     navLabel: "Dermal fillers",
     title: "Dermal Filler Inventory Tracking App | Rastro",
     description:
@@ -151,6 +166,11 @@ export const GUIDES: readonly Guide[] = [
   },
   {
     slug: "injectable-lot-tracking",
+    screenshot: {
+      src: "/images/guide-lot.webp",
+      alt: "Rastro Activity showing package receipts and usage with lot numbers.",
+      caption: "Follow the trail from a received package to recorded usage.",
+    },
     navLabel: "Lot and expiration tracking",
     title: "Lot and Expiration Tracking for Injectables | Rastro",
     description:
@@ -209,6 +229,11 @@ export const GUIDES: readonly Guide[] = [
   },
   {
     slug: "injectable-barcode-scanner",
+    screenshot: {
+      src: "/images/guide-barcode.webp",
+      alt: "Rastro barcode lookup result for Botox Cosmetic 100U, with lot and expiration filled in.",
+      caption: "Product details from a sample barcode, entered in the simulator.",
+    },
     navLabel: "Barcode scanning",
     title: "Barcode Scanner for Injectables: GS1 & HIBCC | Rastro",
     description:
@@ -267,6 +292,11 @@ export const GUIDES: readonly Guide[] = [
   },
   {
     slug: "med-spa-inventory-app",
+    screenshot: {
+      src: "/images/guide-locations.webp",
+      alt: "Rastro Settings showing separate inventory locations and attention settings.",
+      caption: "Set up the practices where you keep your stock.",
+    },
     navLabel: "Med spas and practices",
     title: "Med Spa Inventory App for Injectables | Rastro",
     description:
@@ -325,6 +355,11 @@ export const GUIDES: readonly Guide[] = [
   },
   {
     slug: "injectable-inventory-spreadsheet",
+    screenshot: {
+      src: "/images/guide-export.webp",
+      alt: "Rastro Settings with the option to export inventory and activity as CSV files.",
+      caption: "Keep a spreadsheet copy with inventory and activity exports.",
+    },
     navLabel: "Spreadsheet alternative",
     title: "Injectable Inventory Spreadsheet Alternative | Rastro",
     description:
