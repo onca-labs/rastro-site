@@ -8,8 +8,12 @@
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 /** Absolute URL of the site root, without a trailing slash. Also set by the
- *  deploy workflow from the Pages config; the default is the custom domain. */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://tryrastro.com").replace(/\/$/, "");
+ *  deploy workflow from the Pages config; the default is the custom domain.
+ *  Always https: Pages reports "http://" until HTTPS is enforced, but the site
+ *  is only meant to be served over https, and canonicals must say so. */
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://tryrastro.com")
+  .replace(/^http:\/\//, "https://")
+  .replace(/\/$/, "");
 
 /** GTM container id (GA4 lives inside it). Empty disables GTM, and /privacy
  *  only describes website analytics when this is set. The deploy workflow reads
