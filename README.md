@@ -39,6 +39,11 @@ which redirects there once the custom domain is set)
   simulator captures from Rastro using in-memory demo data (September 30, 2026),
   compressed to 804 × 1748. The barcode screen uses a manually entered sample
   GS1 barcode; it does not show a live camera scan. Tap an image to enlarge it.
+- **Favicons**: `public/favicon.ico`, `icon-192.png`, and
+  `apple-touch-icon.png`, rendered by `node scripts/icons.mjs` from the app
+  icon's R (`scripts/assets/r-ivory.png`, copied from the rastro repo). Google
+  only shows square favicons sized in multiples of 48 px; `icons.test.ts`
+  checks them.
 - **Social preview**: `public/images/og-card.png`, rendered by
   `node scripts/og-image.mjs`. Re-run it after changing the logo, screenshot,
   or its copy.

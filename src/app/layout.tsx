@@ -7,7 +7,15 @@ import "./globals.css";
 // page via pageMetadata() in src/lib/seo.ts. Only site-wide values live here.
 export const metadata: Metadata = {
   applicationName: "Rastro",
-  icons: { icon: asset("/images/mark-green.png"), apple: asset("/images/og.png") },
+  // Rendered by scripts/icons.mjs: the app icon's ivory R on brand green.
+  // Google only shows square favicons sized in multiples of 48 px.
+  icons: {
+    icon: [
+      { url: asset("/favicon.ico"), sizes: "16x16 32x32 48x48" },
+      { url: asset("/icon-192.png"), type: "image/png", sizes: "192x192" },
+    ],
+    apple: { url: asset("/apple-touch-icon.png"), sizes: "180x180" },
+  },
 };
 
 export const viewport: Viewport = {
