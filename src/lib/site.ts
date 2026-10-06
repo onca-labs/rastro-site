@@ -8,10 +8,8 @@
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 /** Absolute URL of the site root, without a trailing slash. Also set by the
- *  deploy workflow; the default is the github.io project URL. */
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://onca-labs.github.io/rastro-site"
-).replace(/\/$/, "");
+ *  deploy workflow from the Pages config; the default is the custom domain. */
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://tryrastro.com").replace(/\/$/, "");
 
 /** GTM container id (GA4 lives inside it). Empty disables GTM, and /privacy
  *  only describes website analytics when this is set. The deploy workflow reads

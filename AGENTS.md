@@ -16,8 +16,9 @@ deploy, and the analytics contract.
 
 - **Static only.** No route handlers, server actions, middleware, ISR, or
   `next.config` redirects/headers; `output: "export"` fails or ignores them.
-- **Base path.** The site is served under `/rastro-site` on github.io.
-  `next/link` adds it; plain `<img>`/`<source>` and metadata icons must go
+- **Base path.** On tryrastro.com the base path is empty; without the custom
+  domain it's `/rastro-site` on github.io. The workflow sets it, so code must
+  work under both. `next/link` adds it; plain `<img>`/`<source>` and metadata icons must go
   through `asset()` from `src/lib/site.ts`. Absolute URLs use `SITE_URL`.
 - Route handlers (e.g. `sitemap.ts`) need `export const dynamic = "force-static"`.
 

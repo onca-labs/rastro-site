@@ -8,8 +8,7 @@ export const dynamic = "force-static";
 /**
  * Every indexable route. Guides come from their registry, so a new guide can't
  * be left out. Trailing slashes match `trailingSlash: true` in next.config.ts.
- * There's no robots.ts: crawlers only read robots.txt at the host root, which a
- * github.io project site doesn't own. Add one with a custom domain.
+ * Keep it consistent with robots.ts and each page's canonical URL.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

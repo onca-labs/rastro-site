@@ -4,7 +4,8 @@ The **marketing site for Rastro**, the injectable inventory app for iPhone
 (app repo: `onca-labs/rastro`, private). Built with Next.js as a static export
 and deployed free on **GitHub Pages**:
 
-https://onca-labs.github.io/rastro-site/
+https://tryrastro.com (also reachable at https://onca-labs.github.io/rastro-site/,
+which redirects there once the custom domain is set)
 
 ## Pages
 
@@ -65,8 +66,9 @@ yarn lint && yarn typecheck && yarn test && yarn build   # build writes out/
 
 Every push to `main` runs `.github/workflows/deploy.yml`: lint, typecheck,
 test, build, then publish `out/` to Pages. `actions/configure-pages` supplies
-the base path (`/rastro-site`) and site URL, so nothing is hardcoded to the
-github.io address.
+the base path and site URL from the repo's Pages settings: `""` and
+`https://tryrastro.com` with the custom domain, `/rastro-site` and the github.io
+URL without it. Nothing in the code is hardcoded to either.
 
 ### Configuration
 
@@ -74,12 +76,20 @@ github.io address.
   `/privacy` then leaves out the analytics paragraph.
   `gh variable set GTM_ID --body GTM-XXXXXXX`, then re-run the deploy.
 
-### Custom domain (later)
+### Custom domain: tryrastro.com
 
-Add it under Settings → Pages and point a `CNAME` record at
-`onca-labs.github.io`. The next deploy picks up the empty base path and new URL
-automatically. With a custom domain, also add `robots.ts` (crawlers only read
-`robots.txt` at the host root).
+DNS is at IONOS (the registrar). The records GitHub Pages needs:
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
+| AAAA | `@` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
+| CNAME | `www` | `onca-labs.github.io` |
+| TXT | `_github-pages-challenge-onca-labs` | the value from the org's Pages settings (domain verification) |
+
+The domain is set in the repo's Settings → Pages (the API's `cname`), not in a
+`CNAME` file: with Actions deploys, Pages ignores that file. After changing
+it, re-run the deploy so the base path and URLs follow.
 
 ## What GitHub Pages can't do
 
