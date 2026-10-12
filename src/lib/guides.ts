@@ -364,7 +364,7 @@ export const GUIDES: readonly Guide[] = [
       },
       {
         q: "What does Rastro cost?",
-        a: "Rastro will be free on the App Store, with no account and no subscription.",
+        a: "Rastro will be free on the App Store, with no account and no subscription. Tracking inventory is free. Rastro Pro, a one-time purchase, adds cost reports: the value of what you used, lost, and have on hand.",
       },
     ],
   },
@@ -431,7 +431,7 @@ export const GUIDES: readonly Guide[] = [
       },
       {
         q: "Is Rastro free?",
-        a: "Rastro will be free on the App Store, with no account and no subscription.",
+        a: "Yes, to download and to track inventory, with no account and no subscription. Rastro Pro, a one-time purchase, adds cost reports.",
       },
     ],
   },
@@ -476,7 +476,7 @@ export const GUIDES: readonly Guide[] = [
         ["Barcode scanning", "A barcode scanner can enter a product's code for quick checkout", "The iPhone camera reads GS1 and HIBCC barcodes: product, lot, expiration, and serial"],
         ["On your phone", "No staff app; the staff side runs in Safari", "A native iPhone app that works offline"],
         ["Reordering", "A reorder threshold puts the product on the Inventory Report", "Days of supply from your own pace, with low-supply flags"],
-        ["Cost", "Part of a monthly Jane subscription", "Planned to be free"],
+        ["Cost", "Part of a monthly Jane subscription", "Free; cost reports are a one-time upgrade"],
       ],
       sources: {
         asOf: "October 1, 2026",
@@ -564,7 +564,7 @@ export const GUIDES: readonly Guide[] = [
         ["Barcode scanning", "A USB 1D/2D scanner on a computer, for SKU and UPC codes", "The iPhone camera reads GS1 and HIBCC barcodes: product, lot, expiration, and serial"],
         ["On your phone", "The Professional app covers appointments, charting, and checkout", "A native iPhone app for inventory that works offline"],
         ["Moving stock between locations", "Not covered in Boulevard's guides", "Move a box or vial, or scan a bag of boxes in Move mode"],
-        ["Cost", "Part of a monthly Boulevard subscription", "Planned to be free"],
+        ["Cost", "Part of a monthly Boulevard subscription", "Free; cost reports are a one-time upgrade"],
       ],
       sources: {
         asOf: "October 1, 2026",
