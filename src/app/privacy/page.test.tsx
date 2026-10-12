@@ -20,6 +20,13 @@ describe("PrivacyPage", () => {
     expect(screen.getByText(/rastro doesn't collect any data/i)).toBeInTheDocument();
   });
 
+  // Rastro Pro is an App Store purchase; the policy says what that shares.
+  test("says Apple handles purchases", async () => {
+    await renderPrivacy();
+
+    expect(screen.getByText(/apple handles the payment/i)).toBeInTheDocument();
+  });
+
   // The policy must describe what the site actually loads.
   test("mentions Google Analytics only when GTM is configured", async () => {
     vi.stubEnv("NEXT_PUBLIC_GTM_ID", "");

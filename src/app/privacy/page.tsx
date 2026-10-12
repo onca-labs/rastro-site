@@ -28,8 +28,9 @@ export default function PrivacyPage() {
         <h2>The Rastro app</h2>
         <p>
           Rastro doesn&apos;t collect any data. It has no accounts, no server, and no analytics
-          or tracking. Your inventory is stored only on your device, and the app doesn&apos;t
-          need an internet connection to work.
+          or tracking. Your inventory is stored on your device, and included in your
+          device&apos;s own backups like any other app&apos;s data. The app doesn&apos;t need an
+          internet connection to work.
         </p>
         <ul>
           <li>
@@ -44,6 +45,12 @@ export default function PrivacyPage() {
           <li>
             <strong>Exports.</strong> A CSV export is created only when you ask for one, and goes
             only where you choose to send it.
+          </li>
+          <li>
+            <strong>Purchases.</strong> Rastro Pro is bought through the App Store. Apple handles
+            the payment and doesn&apos;t give us your payment details or Apple Account. The app
+            checks that you own Pro on your device, using Apple&apos;s signed record of the
+            purchase.
           </li>
           <li>
             <strong>Deleting your data.</strong> Deleting the app deletes its data.

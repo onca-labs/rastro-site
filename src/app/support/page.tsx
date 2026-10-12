@@ -7,7 +7,7 @@ import { pageGraph, pageMetadata } from "@/lib/seo";
 
 const TITLE = "Support and FAQ | Rastro";
 const DESCRIPTION =
-  "Get help with Rastro, the injectable inventory app for iPhone: reporting barcodes, working offline, where your data is stored, and sharing with a team.";
+  "Get help with Rastro, the injectable inventory app for iPhone: reporting barcodes, working offline, where your data is stored, Rastro Pro, and teams.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESCRIPTION, path: "/support/" });
 
@@ -48,14 +48,32 @@ export default function SupportPage() {
 
       <section>
         <h2>Does it work offline?</h2>
-        <p>Yes. Every feature works without an internet connection.</p>
+        <p>
+          Yes. Every feature works without an internet connection. Buying or restoring Rastro Pro
+          needs one, since it goes through the App Store; after that, Pro works offline too.
+        </p>
       </section>
 
       <section>
         <h2>Where is my data stored?</h2>
         <p>
-          Only on your iPhone. Rastro has no server, so there is no copy anywhere else. If you
-          delete the app, its data goes with it. To keep a copy, export to CSV from Settings.
+          On your iPhone. Rastro has no server, so we never have a copy. Your iPhone&apos;s own
+          backups, to iCloud or to a computer, include Rastro&apos;s data like any other app&apos;s,
+          and restoring a backup brings it back. If you delete the app, its data goes with it. To
+          keep a copy you can open anywhere, export to CSV from Settings.
+        </p>
+      </section>
+
+      <section>
+        <h2>What is Rastro Pro?</h2>
+        <p>
+          A one-time purchase that adds cost reports: the value of what you used and lost for any
+          period, by product, source, or location, and the value of what&apos;s on hand. Tracking
+          inventory, including recording prices, stays free. There is no subscription.
+        </p>
+        <p>
+          New iPhone, or reinstalled the app? Open Settings, then Rastro Pro, then Restore
+          purchase, signed in with the Apple Account that bought it.
         </p>
       </section>
 
