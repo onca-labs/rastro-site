@@ -10,7 +10,7 @@ import { COMPANY_URL, LEGAL_ENTITY, SITE_URL } from "./site";
 
 export const SITE_NAME = "Rastro";
 
-/** Search engines truncate past these; the tests enforce them. */
+/** Editorial length targets; search display varies by query and device. */
 export const TITLE_MAX = 60;
 export const DESCRIPTION_MIN = 110;
 export const DESCRIPTION_MAX = 160;
@@ -88,6 +88,7 @@ function siteNodes() {
       "@type": "MobileApplication",
       "@id": APP_ID,
       name: SITE_NAME,
+      url: `${SITE_URL}/`,
       operatingSystem: "iOS 26 or later",
       applicationCategory: "BusinessApplication",
       description:
@@ -121,9 +122,16 @@ export function pageGraph({
         url,
         name: title,
         description,
+        inLanguage: "en-US",
         isPartOf: { "@id": WEBSITE_ID },
+        ...(path !== "/" && path !== "/404/"
+          ? { breadcrumb: { "@id": `${url}#breadcrumb` } }
+          : {}),
         about: { "@id": APP_ID },
       },
+      ...(path !== "/" && path !== "/404/" && !extra.some((node) => node["@type"] === "BreadcrumbList")
+        ? [breadcrumbs([{ name: SITE_NAME, path: "/" }, { name: title.replace(/ \| Rastro$/, ""), path }])]
+        : []),
       ...extra,
     ],
   };
@@ -132,6 +140,7 @@ export function pageGraph({
 export function breadcrumbs(items: { name: string; path: string }[]) {
   return {
     "@type": "BreadcrumbList",
+    "@id": `${absoluteUrl(items[items.length - 1].path)}#breadcrumb`,
     itemListElement: items.map((item, i) => ({
       "@type": "ListItem",
       position: i + 1,

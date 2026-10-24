@@ -27,7 +27,13 @@ which redirects there once the custom domain is set)
 - **Structured data**: every page renders a JSON-LD graph (`pageGraph()`):
   Organization, WebSite, MobileApplication, and the WebPage; guides add
   BreadcrumbList and FAQPage. The homepage also includes FAQPage markup, generated
-  from the same questions and answers as its visible FAQ section.
+  from the same questions and answers as its visible FAQ section. Interior pages
+  link their WebPage node to a BreadcrumbList; the noindex 404 also has a page graph.
+- **Rendered SEO checks**: `src/app/seo-rendering.test.tsx` checks every page
+  for one H1, heading order, JSON-LD page URLs, and breadcrumb references.
+- **Homepage funnel**: product and early access, inventory features, workflow,
+  supply example, audience fit, privacy, guides, comparisons, FAQs, and a final
+  early-access CTA. The hero also links directly to the workflow.
 - **Homepage content**: the supply graphic is an illustrative calculation, not a
   customer outcome. Keep numerical examples labeled and grounded in the app's
   supply logic; do not imply measured savings without evidence.

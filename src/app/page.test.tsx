@@ -15,9 +15,9 @@ describe("LandingPage", () => {
 
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     for (const name of [
-      /fast enough to use between patients/i,
-      /scan it\. use it\. know it\./i,
-      /made for the people holding the syringe/i,
+      /track injectable stock, usage, and expiration/i,
+      /how to track injectables with rastro/i,
+      /inventory for solo injectors and small practices/i,
       /your inventory stays on your phone/i,
       /try rastro before launch/i,
     ]) {

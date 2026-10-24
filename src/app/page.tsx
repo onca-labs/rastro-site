@@ -158,6 +158,7 @@ export default function LandingPage() {
               >
                 Get early access
               </TrackedLink>
+              <Link href="#how" className={styles.cardLink}>See how inventory tracking works →</Link>
               <span className={styles.note}>Coming soon to iPhone. Free to download, with no account required.</span>
             </div>
           </div>
@@ -179,7 +180,7 @@ export default function LandingPage() {
           <SectionHead
             id="features-heading"
             eyebrow="What it does"
-            title="Fast enough to use between patients."
+            title="Track injectable stock, usage, and expiration."
             lede="Common actions take two or three taps once the app is open. Rastro is built to get out of your way."
           />
           <ul className={styles.grid}>
@@ -198,7 +199,7 @@ export default function LandingPage() {
         </section>
 
         <section className={styles.section} id="how" aria-labelledby="how-heading">
-          <SectionHead id="how-heading" eyebrow="How it works" title="Scan it. Use it. Know it." />
+          <SectionHead id="how-heading" eyebrow="How it works" title="How to track injectables with Rastro." />
           <ol className={styles.steps}>
             {STEPS.map((s, i) => (
               <li key={s.title} className={styles.step}>
@@ -216,7 +217,7 @@ export default function LandingPage() {
           <SectionHead
             id="supply-heading"
             eyebrow="Make the numbers useful"
-            title="How far will your stock take you?"
+            title="Estimate days of supply from recorded usage."
             lede="A box count tells you what is on the shelf. Days of supply puts that count in the context of how much you use."
           />
           <figure className={styles.supplyExample}>
@@ -244,7 +245,7 @@ export default function LandingPage() {
           <SectionHead
             id="who-heading"
             eyebrow="Who it's for"
-            title="Made for the people holding the syringe."
+            title="Inventory for solo injectors and small practices."
             lede="Not a practice-management suite, and not an EMR. Just inventory, done well."
           />
           <ul className={styles.grid}>
@@ -285,7 +286,7 @@ export default function LandingPage() {
         </section>
 
         <section className={styles.section} aria-labelledby="guides-heading">
-          <SectionHead id="guides-heading" eyebrow="Inventory guides" title="Start with the stock you manage."
+          <SectionHead id="guides-heading" eyebrow="Inventory guides" title="Botox, filler, barcode, and lot tracking guides."
             lede="Explore the workflow for your products, from receiving a box to reviewing its history." />
           <ul className={styles.grid}>
             {FEATURE_GUIDES.map((guide) => (
@@ -301,7 +302,7 @@ export default function LandingPage() {
           <SectionHead
             id="compare-heading"
             eyebrow="Already have practice software?"
-            title="Keep your EMR. Add Rastro for the vials."
+            title="Compare Rastro with practice inventory software."
             lede="Practice platforms run booking, charting, and billing. Their inventory is often built around retail products. See how each compares with Rastro for injectables."
           />
           <ul className={styles.compareLinks}>

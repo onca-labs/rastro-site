@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import ContentPage from "@/components/ContentPage";
 import { FEATURE_GUIDES, guidePath } from "@/lib/guides";
-import { pageMetadata } from "@/lib/seo";
+import { pageGraph, pageMetadata } from "@/lib/seo";
 
 // GitHub Pages serves the exported 404.html for any unknown path. noindex keeps
 // it out of search results.
@@ -16,6 +17,8 @@ export const metadata: Metadata = pageMetadata({
 
 export default function NotFound() {
   return (
+    <>
+    <JsonLd data={pageGraph({ title: "Page Not Found | Rastro", description: metadata.description!, path: "/404/" })} />
     <ContentPage title="Page not found" lede="That page isn't here. It may have moved, or the link may be wrong.">
       <section>
         <p>
@@ -33,5 +36,6 @@ export default function NotFound() {
         </ul>
       </section>
     </ContentPage>
+    </>
   );
 }
