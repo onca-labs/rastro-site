@@ -87,7 +87,7 @@ const FAQS = [
   },
   {
     q: "Is Rastro available on the App Store?",
-    a: "Rastro is coming soon to iPhone. Request early access by email to join the early testers. It will be free to download, with an optional one-time upgrade, Rastro Pro, for cost reports. No account and no subscription.",
+    a: "Rastro is coming soon to iPhone. Request early access by email to join the early testers. It will be free, cost reports included, with no account, no subscription, and no in-app purchases.",
   },
 ] as const;
 
@@ -333,7 +333,7 @@ export default function LandingPage() {
             id="cta-heading"
             eyebrow="Coming soon"
             title="Try Rastro before launch."
-            lede="Rastro will be free on the App Store, with an optional one-time upgrade for cost reports. No account and no subscription. Email us and we'll add you to the early testers."
+            lede="Rastro will be free on the App Store, cost reports included. No account, no subscription, and no in-app purchases. Email us and we'll add you to the early testers."
           />
           <TrackedLink
             href={EARLY_ACCESS_HREF}

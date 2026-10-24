@@ -7,7 +7,7 @@ import { pageGraph, pageMetadata } from "@/lib/seo";
 
 const TITLE = "Support and FAQ | Rastro";
 const DESCRIPTION =
-  "Get help with Rastro, the injectable inventory app for iPhone: reporting barcodes, working offline, where your data is stored, Rastro Pro, and teams.";
+  "Get help with Rastro, the injectable inventory app for iPhone: reporting barcodes, working offline, where your data is stored, what it costs, and teams.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESCRIPTION, path: "/support/" });
 
@@ -49,8 +49,7 @@ export default function SupportPage() {
       <section>
         <h2>Does it work offline?</h2>
         <p>
-          Yes. Every feature works without an internet connection. Buying or restoring Rastro Pro
-          needs one, since it goes through the App Store; after that, Pro works offline too.
+          Yes. Every feature works without an internet connection.
         </p>
       </section>
 
@@ -65,15 +64,11 @@ export default function SupportPage() {
       </section>
 
       <section>
-        <h2>What is Rastro Pro?</h2>
+        <h2>What does Rastro cost?</h2>
         <p>
-          A one-time purchase that adds cost reports: the value of what you used and lost for any
-          period, by product, source, or location, and the value of what&apos;s on hand. Tracking
-          inventory, including recording prices, stays free. There is no subscription.
-        </p>
-        <p>
-          New iPhone, or reinstalled the app? Open Settings, then Rastro Pro, then Restore
-          purchase, signed in with the Apple Account that bought it.
+          Nothing. Rastro is free, with no in-app purchases and no subscription. That includes
+          cost reports: the value of what you used and lost for any period, by product, source, or
+          location, and the value of what&apos;s on hand.
         </p>
       </section>
 
