@@ -38,4 +38,4 @@ export const LEGAL_ENTITY = "Onca Labs LLC";
 export const COMPANY_URL = "https://oncalabs.io";
 
 /** Effective date on /privacy. Bump it whenever the policy's substance changes. */
-export const PRIVACY_EFFECTIVE = "October 12, 2026";
+export const PRIVACY_EFFECTIVE = "October 23, 2026";
