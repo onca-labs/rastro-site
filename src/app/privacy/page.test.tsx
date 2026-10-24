@@ -20,11 +20,12 @@ describe("PrivacyPage", () => {
     expect(screen.getByText(/rastro doesn't collect any data/i)).toBeInTheDocument();
   });
 
-  // Rastro Pro is an App Store purchase; the policy says what that shares.
-  test("says Apple handles purchases", async () => {
+  // The app has no in-app purchases (rastro#71). If one returns, the policy must say what
+  // buying it shares.
+  test("says the app has no in-app purchases", async () => {
     await renderPrivacy();
 
-    expect(screen.getByText(/apple handles the payment/i)).toBeInTheDocument();
+    expect(screen.getByText(/rastro has no in-app purchases/i)).toBeInTheDocument();
   });
 
   // The policy must describe what the site actually loads.

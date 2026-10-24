@@ -47,10 +47,8 @@ export default function PrivacyPage() {
             only where you choose to send it.
           </li>
           <li>
-            <strong>Purchases.</strong> Rastro Pro is bought through the App Store. Apple handles
-            the payment and doesn&apos;t give us your payment details or Apple Account. The app
-            checks that you own Pro on your device, using Apple&apos;s signed record of the
-            purchase.
+            <strong>Purchases.</strong> Rastro has no in-app purchases. Everything in the app is
+            free.
           </li>
           <li>
             <strong>Deleting your data.</strong> Deleting the app deletes its data.
