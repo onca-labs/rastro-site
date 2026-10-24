@@ -34,8 +34,8 @@ describe("page metadata", () => {
     for (const { path, meta } of await routes()) {
       const title = titleOf(meta);
       const description = meta.description ?? "";
-      const og = meta.openGraph as { url: string; title: string; images: { url: string; width: number; height: number }[] };
-      const twitter = meta.twitter as { card: string; title: string };
+      const og = meta.openGraph as { url: string; title: string; description: string; images: { url: string; width: number; height: number }[] };
+      const twitter = meta.twitter as { card: string; title: string; description: string; images: string[] };
 
       expect(title, path).toMatch(/Rastro/);
       expect(title.length, `${path} title: "${title}"`).toBeLessThanOrEqual(TITLE_MAX);
@@ -44,8 +44,10 @@ describe("page metadata", () => {
       expect(meta.alternates?.canonical, path).toBe(absoluteUrl(path));
       expect(og.url, path).toBe(absoluteUrl(path));
       expect(og.title, path).toBe(title);
+      expect(og.description, path).toBe(description);
       expect(og.images[0]).toMatchObject({ width: 1200, height: 630 });
-      expect(twitter).toMatchObject({ card: "summary_large_image", title });
+      expect(twitter).toMatchObject({ card: "summary_large_image", title, description });
+      expect(twitter.images, path).toEqual([og.images[0].url]);
       expect(meta.robots, `${path} should be indexable`).toBeUndefined();
     }
   });
