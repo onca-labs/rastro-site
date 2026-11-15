@@ -50,10 +50,10 @@ describe("rendered SEO structure", () => {
     }
   });
 
-  test("homepage offers a workflow path and ends with the early-access conversion", () => {
+  test("homepage offers a workflow path and ends with the App Store conversion", () => {
     const document = new DOMParser().parseFromString(renderToStaticMarkup(<Home />), "text/html");
     expect(document.querySelector('main section:first-child a[href="#how"]')).not.toBeNull();
     expect(document.querySelector("main > section:last-child")?.id).toBe("early-access");
-    expect(document.querySelector('#early-access a[href^="mailto:"]')).not.toBeNull();
+    expect(document.querySelector('#early-access a[href^="https://apps.apple.com/"]')).not.toBeNull();
   });
 });

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { GUIDES, guidePath, type Guide } from "@/lib/guides";
-import { EARLY_ACCESS_HREF, asset } from "@/lib/site";
+import { APP_STORE_URL, asset } from "@/lib/site";
 import { breadcrumbs, faqPage, pageGraph } from "@/lib/seo";
 import JsonLd from "./JsonLd";
 import SiteFooter from "./SiteFooter";
@@ -45,14 +45,14 @@ export default function GuidePage({ guide }: { guide: Guide }) {
               <h1 className={styles.title}>{guide.h1}</h1>
               <p className={styles.lede}>{guide.lede}</p>
               <TrackedLink
-                href={EARLY_ACCESS_HREF}
+                href={APP_STORE_URL}
                 className={styles.btn}
-                event="request_access"
+                event="download_click"
                 eventParams={{ location: `guide_${guide.slug}` }}
               >
-                Get early access
+                Download on the App Store
               </TrackedLink>
-              <p className={styles.availability}>Coming soon to iPhone. Explore a preview below.</p>
+              <p className={styles.availability}>Free on the App Store for iPhone. Explore a preview below.</p>
             </div>
             <figure className={styles.preview}>
               <div className={styles.previewStage}>

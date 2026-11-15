@@ -1,6 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, test } from "vitest";
-import { CONTACT_EMAIL } from "@/lib/site";
 import LandingPage from "./page";
 
 type DataLayerWindow = Window & { dataLayer?: Record<string, unknown>[] };
@@ -19,7 +18,7 @@ describe("LandingPage", () => {
       /how to track injectables with rastro/i,
       /inventory for solo injectors and small practices/i,
       /your inventory stays on your phone/i,
-      /try rastro before launch/i,
+      /start tracking your inventory today/i,
     ]) {
       expect(screen.getByRole("heading", { name })).toBeInTheDocument();
     }
@@ -47,21 +46,21 @@ describe("LandingPage", () => {
     }
   });
 
-  test("every early-access CTA emails the contact inbox and fires request_access", () => {
+  test("every download CTA opens the App Store listing and fires download_click", () => {
     render(<LandingPage />);
-    const ctas = screen.getAllByRole("link", { name: /get early access/i });
+    const ctas = screen.getAllByRole("link", { name: /^download/i });
 
     for (const cta of ctas) fireEvent.click(cta);
 
     // Header, hero, final CTA.
     expect(ctas).toHaveLength(3);
     for (const cta of ctas) {
-      expect(cta.getAttribute("href")).toMatch(new RegExp(`^mailto:${CONTACT_EMAIL}\\?`));
+      expect(cta.getAttribute("href")).toMatch(/^https:\/\/apps\.apple\.com\/app\/id\d+$/);
     }
     expect((window as DataLayerWindow).dataLayer).toEqual([
-      { event: "request_access", location: "header" },
-      { event: "request_access", location: "hero" },
-      { event: "request_access", location: "footer_cta" },
+      { event: "download_click", location: "header" },
+      { event: "download_click", location: "hero" },
+      { event: "download_click", location: "footer_cta" },
     ]);
   });
 

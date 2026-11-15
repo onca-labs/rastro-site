@@ -364,7 +364,7 @@ export const GUIDES: readonly Guide[] = [
       },
       {
         q: "What does Rastro cost?",
-        a: "Nothing. Rastro will be free on the App Store, with no account, no subscription, and no in-app purchases. Cost reports are included: the value of what you used, lost, and have on hand.",
+        a: "Nothing. Rastro is free on the App Store, with no account, no subscription, and no in-app purchases. Cost reports are included: the value of what you used, lost, and have on hand.",
       },
     ],
   },
