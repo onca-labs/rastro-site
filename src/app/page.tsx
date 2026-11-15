@@ -4,14 +4,14 @@ import JsonLd from "@/components/JsonLd";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import TrackedLink from "@/components/TrackedLink";
-import { EARLY_ACCESS_HREF, asset } from "@/lib/site";
+import { APP_STORE_URL, asset } from "@/lib/site";
 import { COMPARISON_GUIDES, FEATURE_GUIDES, guidePath } from "@/lib/guides";
 import { faqPage, pageGraph, pageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
 /**
- * Tracking contract (GTM): `request_access` (with `location`) on every
- * early-access CTA, and the anchor ids `top`, `features`, `how`, `who`, `compare`,
+ * Tracking contract (GTM): `download_click` (with `location`) on every
+ * App Store CTA, and the anchor ids `top`, `features`, `how`, `who`, `compare`,
  * `privacy-first`, `early-access`. `page.test.tsx` asserts both.
  *
  * Every claim here must match the app (rastro repo, docs/prd.md).
@@ -87,7 +87,7 @@ const FAQS = [
   },
   {
     q: "Is Rastro available on the App Store?",
-    a: "Rastro is coming soon to iPhone. Request early access by email to join the early testers. It will be free, cost reports included, with no account, no subscription, and no in-app purchases.",
+    a: "Yes. Rastro is free on the App Store for iPhone, cost reports included, with no account, no subscription, and no in-app purchases.",
   },
 ] as const;
 
@@ -151,15 +151,15 @@ export default function LandingPage() {
             </p>
             <div className={styles.actions}>
               <TrackedLink
-                href={EARLY_ACCESS_HREF}
+                href={APP_STORE_URL}
                 className={styles.btnPrimary}
-                event="request_access"
+                event="download_click"
                 eventParams={{ location: "hero" }}
               >
-                Get early access
+                Download on the App Store
               </TrackedLink>
               <Link href="#how" className={styles.cardLink}>See how inventory tracking works →</Link>
-              <span className={styles.note}>Coming soon to iPhone. Free to download, with no account required.</span>
+              <span className={styles.note}>Free on the App Store for iPhone, with no account required.</span>
             </div>
           </div>
           <figure className={styles.productPreview}>
@@ -329,20 +329,21 @@ export default function LandingPage() {
           <Link className={styles.cardLink} href="/support/">More help and support →</Link>
         </section>
 
+        {/* The id predates launch; GTM keys off it, so it keeps its name. */}
         <section className={styles.cta} id="early-access" aria-labelledby="cta-heading">
           <SectionHead
             id="cta-heading"
-            eyebrow="Coming soon"
-            title="Try Rastro before launch."
-            lede="Rastro will be free on the App Store, cost reports included. No account, no subscription, and no in-app purchases. Email us and we'll add you to the early testers."
+            eyebrow="Free on the App Store"
+            title="Start tracking your inventory today."
+            lede="Rastro is free on the App Store, cost reports included. No account, no subscription, and no in-app purchases."
           />
           <TrackedLink
-            href={EARLY_ACCESS_HREF}
+            href={APP_STORE_URL}
             className={styles.btnPrimary}
-            event="request_access"
+            event="download_click"
             eventParams={{ location: "footer_cta" }}
           >
-            Get early access
+            Download on the App Store
           </TrackedLink>
         </section>
       </main>

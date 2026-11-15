@@ -30,8 +30,12 @@ export function asset(path: string): string {
  *  no mail domain of its own yet. */
 export const CONTACT_EMAIL = "hello@oncahq.com";
 
-/** mailto behind every early-access CTA (header, hero, final CTA). */
-export const EARLY_ACCESS_HREF = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Rastro early access")}`;
+/** Rastro's Apple ID in App Store Connect (App Information → Apple ID). */
+export const APP_STORE_ID = "APPLE_ID";
+
+/** Behind every download CTA (header, hero, final CTA, guides). The region-free form,
+ *  which opens the visitor's own storefront. */
+export const APP_STORE_URL = `https://apps.apple.com/app/id${APP_STORE_ID}`;
 
 /** The company behind Rastro, named in the footer and on /privacy. */
 export const LEGAL_ENTITY = "Onca Labs LLC";

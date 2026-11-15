@@ -31,9 +31,9 @@ which redirects there once the custom domain is set)
   link their WebPage node to a BreadcrumbList; the noindex 404 also has a page graph.
 - **Rendered SEO checks**: `src/app/seo-rendering.test.tsx` checks every page
   for one H1, heading order, JSON-LD page URLs, and breadcrumb references.
-- **Homepage funnel**: product and early access, inventory features, workflow,
+- **Homepage funnel**: product and App Store download, inventory features, workflow,
   supply example, audience fit, privacy, guides, comparisons, FAQs, and a final
-  early-access CTA. The hero also links directly to the workflow.
+  App Store CTA. The hero also links directly to the workflow.
 - **Homepage content**: the supply graphic is an illustrative calculation, not a
   customer outcome. Keep numerical examples labeled and grounded in the app's
   supply logic; do not imply measured savings without evidence.
@@ -107,13 +107,13 @@ it, re-run the deploy so the base path and URLs follow.
 Pages serves static files only. No API routes (so no server-side forms like
 onca-hq's waitlist), no redirects from `next.config`, no custom headers (the
 `vercel.json` security headers the other sites use), and no image
-optimization. The early-access CTA is a `mailto:` link for that reason.
+optimization. Before launch the CTA was a `mailto:` for early access; since launch it links to the App Store listing.
 
 ## Analytics contract
 
 | Event | Fired when | Params |
 | --- | --- | --- |
-| `request_access` | an early-access CTA is clicked | `location` (`header`, `hero`, `footer_cta`, `guide_<slug>`) |
+| `download_click` | an App Store CTA is clicked | `location` (`header`, `hero`, `footer_cta`, `guide_<slug>`) |
 | `contact_click` | the support email is clicked | `location` |
 
 Anchor ids `top`, `features`, `how`, `who`, `compare`, `privacy-first`, `early-access` are asserted by

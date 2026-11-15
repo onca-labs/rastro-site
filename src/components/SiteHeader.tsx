@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { EARLY_ACCESS_HREF } from "@/lib/site";
+import { APP_STORE_URL } from "@/lib/site";
 import Brand from "./Brand";
 import TrackedLink from "./TrackedLink";
 import styles from "./Site.module.css";
@@ -19,12 +19,12 @@ export default function SiteHeader() {
           <Link href="/support/">Support</Link>
         </nav>
         <TrackedLink
-          href={EARLY_ACCESS_HREF}
+          href={APP_STORE_URL}
           className={styles.headerCta}
-          event="request_access"
+          event="download_click"
           eventParams={{ location: "header" }}
         >
-          Get early access
+          Download
         </TrackedLink>
       </div>
     </header>
